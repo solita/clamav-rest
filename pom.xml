@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.1.6.RELEASE</version>
+  </parent>
+
+  <groupId>fi.solita.clamav</groupId>
+  <artifactId>clamav-rest</artifactId>
+  <version>1.0.0</version>  
+  <packaging>jar</packaging>
+  <name>Simple ClamAV proxy</name>
+  <description>Simple REST proxy to put between a client and clamd server. </description>
+  <url>https://github.com/solita/clamav-rest</url>
+  <licenses>
+    <license>
+      <name>GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1</name>
+      <url>http://www.gnu.org/licenses/lgpl.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Antti Virtanen</name>
+      <email>antti.virtanen@solita.fi</email>
+      <organization>Solita</organization>
+      <organizationUrl>http://www.solita.fi</organizationUrl>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <start-class>fi.solita.clamav.Application</start-class>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <scm>
+    <connection>scm:git:git://github.com/solita/clamav-rest.git</connection>
+    <developerConnection>scm:git:git@github.com:solita/clamav-rest.git</developerConnection>
+    <url>https://github.com/solita/clamav-rest</url>
+  </scm>
+
+  <dependencies>
+    <dependency>
+      <groupId>fi.solita.clamav</groupId>
+      <artifactId>clamav-client</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
+      <!-- Import dependency management from Spring Boot -->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-dependencies</artifactId>
+      <version>1.1.6.RELEASE</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+
+    <!-- tag::jetty[] -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jetty</artifactId>
+    </dependency>
+    <!-- end::jetty[] -->
+    <!-- tag::actuator[] 
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency> -->
+    <!-- end::actuator[] -->
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
+	<configuration>
+	  <source>1.7</source>
+	  <target>1.7</target>
+	</configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
