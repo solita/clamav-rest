@@ -2,18 +2,28 @@ Simple [ClamAV](http://www.clamav.net/) REST proxy.
 
 # What is it?
 
-A REST proxy server with support for basic INSTREAM scanning and PING command. 
+## The big picture
+
+This is an example for the deployment. You could omit the log server, it's completely optional.
+
+![Deployment example](img/virusscanner-deployment.png)
+
+For more general information, see also [our blog post](http://dev.solita.fi/2015/06/02/rest-virusscan.html).
+
+## The technical details
+
+This is a REST proxy server with support for basic INSTREAM scanning and PING command. 
 
 Clamd protocol is explained here:
 http://linux.die.net/man/8/clamd
 
-Clamd protocol contains command such as shutdown so exposing clamd directly to external services is not a feasible option. Accessing clamd directly
-is fine if you are running single application and it's on the localhost. 
+Clamd protocol contains command such as shutdown so exposing clamd directly to external services is not a feasible option. Accessing clamd directly is fine if you are running single application and it's on the localhost. 
 
 ## An example to build on
 
 This is is mainly an example, not a serious production ready server. You can customize this for your specific needs. Or rewrite it using something
 other than [Spring Boot](http://projects.spring.io/spring-boot/) if you wish.
+
 
 # Usage
 
