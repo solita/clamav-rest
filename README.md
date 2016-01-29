@@ -27,7 +27,9 @@ other than [Spring Boot](http://projects.spring.io/spring-boot/) if you wish.
 
 # Usage
 
-You need to build the JAR. This creates a stand-alone JAR with embedded [Jetty serlet container](http://www.eclipse.org/jetty/).
+You have two options. You can use [Docker](https://www.docker.com/) and run a [Docker image](https://hub.docker.com/r/lokori/clamav-rest/) to test it. The Docker image is based on the supplied [Dockerfile specification](https://github.com/solita/clamav-rest/blob/master/Dockerfile).
+
+Or you can build the JAR. This creates a stand-alone JAR with embedded [Jetty serlet container](http://www.eclipse.org/jetty/).
 
 ```
   mvn package
@@ -42,7 +44,7 @@ Starting the REST service is quite straightforward.
 ## Setting up local clamd virtual server
 
 By default clamd is assumed to respond in a local virtual machine. Setting it up is explained in
-[ClamAV client](https://github.com/solita/clamav-java) repository. 
+[ClamAV client](https://github.com/solita/clamav-java) repository. Or you can use a [clamd Docker image](https://hub.docker.com/r/mkodockx/docker-clamav).
 
 # Testing the REST service
 
