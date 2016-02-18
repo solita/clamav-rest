@@ -1,4 +1,4 @@
-Simple [ClamAV](http://www.clamav.net/) REST proxy.
+Simple [ClamAV](http://www.clamav.net/) REST proxy. Builds on top of [clamav-java](https://github.com/solita/clamav-java) which is a minimal Java client for ClamAV.
 
 # What is it?
 
