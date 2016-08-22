@@ -9,7 +9,7 @@ before_install:
  - docker pull mkodockx/docker-clamav
  - docker run -d -p 3310:3310 mkodockx/docker-clamav
  - docker pull lokori/clamav-rest
- - docker run -p 8080:8080 --link clamav-server:clamav-server -t -i lokori/clamav-rest -d clamd.host=clamav-server
+ - docker run -e 'CLAMD_HOST=clamav-server' -p 8080:8080 --link clamav-server:clamav-server -t -i lokori/clamav-rest
 
 script:
  - curl localhost:8080
