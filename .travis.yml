@@ -12,5 +12,6 @@ before_install:
  - docker run -d -e 'CLAMD_HOST=clamav-server' -p 8080:8080 --link clamav-server:clamav-server -t -i lokori/clamav-rest
 
 script:
+ - mvn test
  - ./testi.sh
 
