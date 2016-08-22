@@ -1,6 +1,8 @@
 #!/bin/bash
 
-fo=$(curl -s -F "name=blabla" -F "file=@./testi.sh" 192.168.99.100:8080/scan)
+echo "testing by scanning this file.."
+
+fo=$(curl -s -F "name=blabla" -F "file=@./testi.sh" localhost:8080/scan)
 
 if [ "$fo" != "Everything ok : true" ]
   then
