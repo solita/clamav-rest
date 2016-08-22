@@ -1,7 +1,6 @@
 #!/bin/bash
 set -m
 
-echo "fo $CLAMD_HOST"
 host=${CLAMD_HOST:-192.168.50.72}
 port=${CLAMD_PORT:-3310}
 
