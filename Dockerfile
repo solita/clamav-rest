@@ -2,13 +2,7 @@ FROM centos:6
 
 MAINTAINER lokori <antti.virtanen@iki.fi>
 
-RUN yum update -y 
-RUN yum install -y java-1.8.0-openjdk
-
-# jar command
-RUN yum install -y java-1.8.0-openjdk-devel
-
-RUN yum clean all
+RUN yum update -y && yum install -y java-1.8.0-openjdk &&  yum install -y java-1.8.0-openjdk-devel && yum clean all
 
 # Set environment variables.
 ENV HOME /root
@@ -26,4 +20,3 @@ EXPOSE 8080
 ADD bootstrap.sh /
 ENTRYPOINT ["/bootstrap.sh"]
 
-# docker build -t lokori/clamav-rest .

@@ -1,8 +1,9 @@
 #!/bin/bash
 set -m
 
-host=${1:-192.168.50.72}
-port=${2:-3310}
+echo "fo $CLAMD_HOST"
+host=${CLAMD_HOST:-192.168.50.72}
+port=${CLAMD_PORT:-3310}
 
 echo "using clamd server: $host:$port"
 
