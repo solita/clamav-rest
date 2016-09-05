@@ -8,12 +8,12 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.1.6.RELEASE</version>
+    <version>1.4.0.RELEASE</version>
   </parent>
 
   <groupId>fi.solita.clamav</groupId>
   <artifactId>clamav-rest</artifactId>
-  <version>1.0.0</version>  
+  <version>1.0.1</version>  
   <packaging>jar</packaging>
   <name>Simple ClamAV proxy</name>
   <description>Simple REST proxy to put between a client and clamd server. </description>

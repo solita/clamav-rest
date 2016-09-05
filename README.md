@@ -40,7 +40,7 @@ Or you can build the JAR. This creates a stand-alone JAR with embedded [Jetty se
 Starting the REST service is quite straightforward.
 
 ```
-  java -jar clamav-rest-1.0.0.jar --server.port=8765 --clamd.host=myprecious.clamd.serv.er --clamd.port=3310
+  java -jar clamav-rest-1.0.1.jar --server.port=8765 --clamd.host=myprecious.clamd.serv.er --clamd.port=3310
 ```
 
 ## Setting up local clamd virtual server
