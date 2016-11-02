@@ -13,31 +13,34 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class ClamAVProxy {
 
-    @Value("${clamd.host}")
-    private String hostname;
-    
-    @Value("${clamd.port}")
-    private int port;
+  @Value("${clamd.host}")
+  private String hostname;
 
-    /**
-     * @return Clamd status.
-     */
-    @RequestMapping("/")
-    public String ping() throws IOException {
-      ClamAVClient a = new ClamAVClient(hostname, port);
-      return "Clamd responding: " + a.ping() + "\n";
-    }
-    
-    /**
-     * @return Clamd scan result
-     */
-    @RequestMapping(value="/scan", method=RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
-        @RequestParam("file") MultipartFile file) throws IOException{
-          if (!file.isEmpty()) {
-            ClamAVClient a = new ClamAVClient(hostname, port);
-            byte[] r = a.scan(file.getInputStream());
-            return "Everything ok : " + ClamAVClient.isCleanReply(r) + "\n";
-        } else throw new IllegalArgumentException("empty file");
-    }
+  @Value("${clamd.port}")
+  private int port;
+
+  @Value("${clamd.timeout}")
+  private int timeout;
+
+  /**
+   * @return Clamd status.
+   */
+  @RequestMapping("/")
+  public String ping() throws IOException {
+    ClamAVClient a = new ClamAVClient(hostname, port, timeout);
+    return "Clamd responding: " + a.ping() + "\n";
+  }
+
+  /**
+   * @return Clamd scan result
+   */
+  @RequestMapping(value="/scan", method=RequestMethod.POST)
+  public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
+                                               @RequestParam("file") MultipartFile file) throws IOException{
+    if (!file.isEmpty()) {
+      ClamAVClient a = new ClamAVClient(hostname, port, timeout);
+      byte[] r = a.scan(file.getInputStream());
+      return "Everything ok : " + ClamAVClient.isCleanReply(r) + "\n";
+    } else throw new IllegalArgumentException("empty file");
+  }
 }
