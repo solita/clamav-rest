@@ -9,7 +9,7 @@ ENV HOME /root
 
 # Get the JAR file 
 CMD mkdir /var/clamav-rest
-COPY clamav-rest-1.0.1.jar /var/clamav-rest/
+COPY clamav-rest-1.0.2.jar /var/clamav-rest/
 
 # Define working directory.
 WORKDIR /var/clamav-rest/
