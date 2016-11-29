@@ -43,4 +43,16 @@ public class ClamAVProxy {
       return "Everything ok : " + ClamAVClient.isCleanReply(r) + "\n";
     } else throw new IllegalArgumentException("empty file");
   }
+  
+  /**
+   * @return Clamd scan reply
+   */
+  @RequestMapping(value="/scanReply", method=RequestMethod.POST)
+  public @ResponseBody String handleFileUploadReply(@RequestParam("name") String name,
+                                                    @RequestParam("file") MultipartFile file) throws IOException{
+    if (!file.isEmpty()) {
+      ClamAVClient a = new ClamAVClient(hostname, port, timeout);
+      return new String(a.scan(file.getInputStream()));
+    } else throw new IllegalArgumentException("empty file");
+  }
 }
