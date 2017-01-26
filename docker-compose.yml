@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+    clamav-server:
+        image: mkodockx/docker-clamav
+        
+    rest-client:
+        image: lokori/clamav-rest
+        ports:
+            - "8080:8080"
+        environment: 
+            - CLAMD_HOST=clamav-server
+            - CLAMD_MAX_FILE_SIZE=30000KB
+            - CLAMD_MAX_REQUEST_SIZE=30000KB
+        links:
+            - clamav-server
