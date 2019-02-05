@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.MultipartConfigElement;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.jetty.servlets.QoSFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +28,8 @@ import org.springframework.context.annotation.Configuration;
  */
 public class Application {
 
+  private Log log = LogFactory.getLog(Application.class);
+
   @Value("${clamd.maxfilesize}")
   private String maxfilesize;
 
@@ -43,6 +47,8 @@ public class Application {
 
   @Bean
   MultipartConfigElement multipartConfigElement() {
+    log.info(String.format("Configuring multipart support, maxFileSize=%s, maxRequestSize=%s",
+            maxfilesize, maxrequestsize));
     MultipartConfigFactory factory = new MultipartConfigFactory();
     factory.setMaxFileSize(maxfilesize);
     factory.setMaxRequestSize(maxrequestsize);
@@ -52,6 +58,8 @@ public class Application {
   @Bean
   @ConditionalOnExpression("${clamd.qos.maxrequests} > 0")
   FilterRegistrationBean qosFitlerRegistrationBean() {
+    log.info(String.format("Configuring QoSFilter, maxRequests=%d, waitMs=%d, suspendMs=%d",
+            maxrequests, waitMs, suspendMs));
     FilterRegistrationBean registration = new FilterRegistrationBean();
     registration.setFilter(new QoSFilter());
     registration.addInitParameter("maxRequests", Integer.toString(maxrequests));
