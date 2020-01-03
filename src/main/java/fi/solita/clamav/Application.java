@@ -12,12 +12,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
-import org.springframework.boot.context.embedded.MultipartConfigFactory;
-import org.springframework.boot.web.filter.OrderedHiddenHttpMethodFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.boot.web.servlet.filter.OrderedHiddenHttpMethodFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.unit.DataSize;
 
 @Configuration
 @EnableAutoConfiguration
@@ -50,8 +51,8 @@ public class Application {
     log.info(String.format("Configuring multipart support, maxFileSize=%s, maxRequestSize=%s",
             maxfilesize, maxrequestsize));
     MultipartConfigFactory factory = new MultipartConfigFactory();
-    factory.setMaxFileSize(maxfilesize);
-    factory.setMaxRequestSize(maxrequestsize);
+    factory.setMaxFileSize(DataSize.parse(maxfilesize));
+    factory.setMaxRequestSize(DataSize.parse(maxrequestsize));
     return factory.createMultipartConfig();
   }
 
