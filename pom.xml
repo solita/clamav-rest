@@ -13,43 +13,28 @@
 
   <groupId>fi.solita.clamav</groupId>
   <artifactId>clamav-rest</artifactId>
-  <version>1.0.2</version>  
+  <version>1.0.3</version>
   <packaging>jar</packaging>
   <name>Simple ClamAV proxy</name>
   <description>Simple REST proxy to put between a client and clamd server. </description>
-  <url>https://github.com/solita/clamav-rest</url>
+  <url>https://github.com/Opetushallitus/clamav-rest</url>
   <licenses>
     <license>
       <name>GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1</name>
       <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
   </licenses>
-  <developers>
-    <developer>
-      <name>Antti Virtanen</name>
-      <email>antti.virtanen@solita.fi</email>
-      <organization>Solita</organization>
-      <organizationUrl>http://www.solita.fi</organizationUrl>
-    </developer>
-  </developers>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <start-class>fi.solita.clamav.Application</start-class>
-    <java.version>1.8</java.version>
   </properties>
-
-  <scm>
-    <connection>scm:git:git://github.com/solita/clamav-rest.git</connection>
-    <developerConnection>scm:git:git@github.com:solita/clamav-rest.git</developerConnection>
-    <url>https://github.com/solita/clamav-rest</url>
-  </scm>
 
   <dependencies>
     <dependency>
       <groupId>fi.solita.clamav</groupId>
       <artifactId>clamav-client</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
 
     <!-- tag::jetty[] -->
@@ -81,10 +66,9 @@
     <plugins>
       <plugin>
 	<artifactId>maven-compiler-plugin</artifactId>
-	<version>2.3.2</version>
+	<version>3.8.1</version>
 	<configuration>
-	  <source>1.7</source>
-	  <target>1.7</target>
+          <release>11</release>
 	</configuration>
       </plugin>
       <plugin>
