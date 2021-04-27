@@ -2,12 +2,14 @@ package fi.solita.clamav;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * These tests assume clamav-rest Docker container is running and responding locally. 
  */
+@Ignore
 public class PingTest {
 
   @Test
