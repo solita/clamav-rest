@@ -12,7 +12,7 @@
 
   <groupId>fi.solita.clamav</groupId>
   <artifactId>clamav-rest</artifactId>
-  <version>1.0.2</version>  
+  <version>1.0.3</version>
   <packaging>jar</packaging>
   <name>Simple ClamAV proxy</name>
   <description>Simple REST proxy to put between a client and clamd server. </description>
@@ -48,7 +48,7 @@
     <dependency>
       <groupId>fi.solita.clamav</groupId>
       <artifactId>clamav-client</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>javax.xml.bind</groupId>
