@@ -17,13 +17,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { Application.class, TestConfiguration.class })
+@SpringBootTest(
+  classes = { Application.class, TestConfiguration.class },
+  properties = {"spring.main.allow-bean-definition-overriding=true"}
+)
 @AutoConfigureMockMvc
 public class ApiTest {
 
