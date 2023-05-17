@@ -5,7 +5,7 @@ host=${CLAMD_HOST:-127.0.0.1}
 port=${CLAMD_PORT:-3310}
 filesize=${MAXSIZE:-10240MB}
 timeout=${TIMEOUT:-10000}
-loglevel=${LOGLEVEL:-debug}
+loglevel=${LOGLEVEL:-info}
 
 echo "using clamd server: $host:$port"
 echo "loglevel: $loglevel"
