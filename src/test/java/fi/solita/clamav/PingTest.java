@@ -1,15 +1,16 @@
 package fi.solita.clamav;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * These tests assume clamav-rest Docker container is running and responding locally. 
+ * These tests assume clamav-rest Docker container is running and responding
+ * locally.
  */
-@Ignore
+@Disabled
 public class PingTest {
 
   @Test

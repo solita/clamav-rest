@@ -1,5 +1,8 @@
 package fi.solita.clamav;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.jetty.security.ConstraintMapping;
 import org.eclipse.jetty.security.ConstraintSecurityHandler;
 import org.eclipse.jetty.server.Handler;
@@ -15,9 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.unit.DataSize;
 
-import javax.servlet.MultipartConfigElement;
-import java.util.HashMap;
-import java.util.Map;
+import jakarta.servlet.MultipartConfigElement;
 
 @Configuration
 @EnableAutoConfiguration
@@ -51,19 +52,22 @@ public class Application {
 
   private JettyServerCustomizer jettyServerCustomizer() {
     /**
-     * TRACE method leads to Cross-Site Tracking (XST) problem so it is wise to disable it.
+     * TRACE method leads to Cross-Site Tracking (XST) problem so it is wise to
+     * disable it.
      *
-     * Trick to disable HTTP TRACE requests. So no one has access to the "/" using "TRACE" HTTP method.
+     * Trick to disable HTTP TRACE requests. So no one has access to the "/" using
+     * "TRACE" HTTP method.
      * <security-constraint>
-     *   <web-resource-collection>
-     *     <web-resource-name>Disable TRACE</web-resource-name>
-     *     <url-pattern>/</url-pattern>
-     *     <http-method>TRACE</http-method>
-     *   </web-resource-collection>
-     *   <auth-constraint/>
+     * <web-resource-collection>
+     * <web-resource-name>Disable TRACE</web-resource-name>
+     * <url-pattern>/</url-pattern>
+     * <http-method>TRACE</http-method>
+     * </web-resource-collection>
+     * <auth-constraint/>
      * </security-constraint>
      *
-     * See e.g. https://github.com/eclipse/jetty.project/blob/jetty-9.2.10.v20150310/jetty-webapp/src/main/config/etc/webdefault.xml#L514-L531
+     * See e.g.
+     * https://github.com/eclipse/jetty.project/blob/jetty-9.2.10.v20150310/jetty-webapp/src/main/config/etc/webdefault.xml#L514-L531
      */
     return server -> {
       Handler originalHandler = server.getHandler();
@@ -81,7 +85,7 @@ public class Application {
       omissionConstraint.setName("Enable everything but TRACE");
       ConstraintMapping omissionMapping = new ConstraintMapping();
       omissionMapping.setConstraint(omissionConstraint);
-      omissionMapping.setMethodOmissions(new String [] {"TRACE"});
+      omissionMapping.setMethodOmissions(new String[] { "TRACE" });
       omissionMapping.setPathSpec("/");
 
       ConstraintSecurityHandler wrappingHandler = new ConstraintSecurityHandler();
