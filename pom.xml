@@ -37,7 +37,7 @@
     <start-class>fi.solita.clamav.Application</start-class>
     <java.version>17</java.version>
     <snakeyaml.version>2.0</snakeyaml.version>
-    <!--jakarta-servlet.version>5.0.0</jakarta-servlet.version-->
+    <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
   </properties>
 
   <scm>
@@ -64,11 +64,12 @@
       <artifactId>jetty-server</artifactId>
       <version>11.0.14</version>      
     </dependency>
-    <!--dependency>
+    <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
       <version>6.0.0</version>      
-    </dependency-->    
+      <scope>test</scope>
+    </dependency>    
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
