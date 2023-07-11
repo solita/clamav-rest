@@ -37,6 +37,7 @@
     <start-class>fi.solita.clamav.Application</start-class>
     <java.version>17</java.version>
     <snakeyaml.version>2.0</snakeyaml.version>
+    <jakarta-servlet.version>5.0</jakarta-servlet.version>
   </properties>
 
   <scm>
